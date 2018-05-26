@@ -86,8 +86,7 @@ function fazer-backup()
   elif [[ ! -d "$destination/next" ]]; then
     deploynext $destination
   fi
-  rsync -aHx -S $rsyncparam --delete-during --delete-excluded --verbose \
-    --stats --numeric-ids $machine:$origindir $destination/next
+  rsync $DEFAULTRSYNCPARAM $rsyncparam $machine:$origindir $destination/next
 
 }
 
@@ -104,6 +103,7 @@ RUNFILE=${RUNFILE:=/var/run/ssbackup.pid}
 CHECKPOINTSTRING=${CHECKPOINTSTRING:=checkpoint}
 CHECKPOINTDAY=${CHECKPOINTDAY:=01}
 AGGRESSIVELOG=${AGGRESSIVELOG:=f}
+DEFAULTRSYNCPARAM="${DEFAULTRSYNCPARAM:=-aHxvS --delete-during --delete-excluded --stats --numeric-ids}"
 
 if [[ -e "$CONFFILE" ]]; then
   source $CONFFILE || exit 1
