@@ -103,7 +103,7 @@ MAXBKP=${MAXBKP:=90}
 RUNFILE=${RUNFILE:=/var/run/ssbackup.pid}
 CHECKPOINTSTRING=${CHECKPOINTSTRING:=checkpoint}
 CHECKPOINTDAY=${CHECKPOINTDAY:=01}
-AGRESSIVELOG=${AGRESSIVELOG:=f}
+AGGRESSIVELOG=${AGGRESSIVELOG:=f}
 
 if [[ -e "$CONFFILE" ]]; then
   source $CONFFILE || exit 1
@@ -120,7 +120,7 @@ if [[ ! -d "$LOGDIR" ]]; then
 fi
 
 exec &> $LOGDIR/execution-$NOW
-if [[ "$AGRESSIVELOG" == "t" ]]; then
+if [[ "$AGGRESSIVELOG" == "t" ]]; then
   set -x
 fi
 
