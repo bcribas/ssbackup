@@ -73,3 +73,12 @@ For now you should set a cron to run it, a good start is:
 ```
 
 Or just symbolic link ssbackup to /etc/cron.hourly
+
+## TODO
+
+- [ ] Rotate logs with logrotate
+- [ ] Compress logs
+- [ ] Create a Debian package
+- [ ] Better error reports
+- [ ] Option to do encrypted backups on the cloud (such as amazon s3)
+
