@@ -1,4 +1,6 @@
 #!/bin/bash
+# This script is distributed as is, under GPLv2 license
+
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 function checkalive()
