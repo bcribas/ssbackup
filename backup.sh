@@ -3,6 +3,11 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+function cleanexit()
+{
+  rm -f $RUNFILE
+}
+
 function checkalive()
 {
   local machine=$1
@@ -126,6 +131,7 @@ fi
 
 echo $$ > $RUNFILE
 
+trap cleanexit EXIT
 
 #Read Last backup state
 declare -A LASTBKP
@@ -160,7 +166,7 @@ for machinedir in ${!BKPINTERVAL[@]}; do
   fi
 done
 
-(( need == 0 )) && rm $RUNFILE && exit 0
+(( need == 0 )) && exit 0
 
 if ! df -H "$BACKUPDIR" | grep -q "$BACKUPDIR" ; then
   mount $BACKUPDIR
@@ -212,5 +218,3 @@ umount /backup
 for machinedir in ${!BKPINTERVAL[@]}; do
   echo "$machinedir ${LASTBKP[$machinedir]}"
 done > $LASTBKPSTATE
-
-rm $RUNFILE
