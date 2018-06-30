@@ -81,4 +81,4 @@ Or just symbolic link ssbackup to /etc/cron.hourly
 - [ ] Create a Debian package
 - [ ] Better error reports
 - [ ] Option to do encrypted backups on the cloud (such as amazon s3)
-
+- [ ] Create a squashfs of checkpoints
